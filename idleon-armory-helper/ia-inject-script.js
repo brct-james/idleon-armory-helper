@@ -1,3 +1,20 @@
+// Handle swapping helper sides
+function swapHelperLocation() {
+    let body = document.getElementsByTagName("body")[0];
+    body.classList.toggle("rowReverse");
+}
+
+//Handle setting helper width
+function updateHelperWidth() {
+    let input = document.getElementById("helperWidthInput");
+    let helper = document.getElementById("idleon-armory-helper");
+    let iVal = input.value + "vw";
+    helper.style.width = iVal;
+    helper.style.maxWidth = iVal;
+    helper.style.minWidth = iVal;
+    input.value = 30;
+}
+
 // Click on a close button to hide the current list item
 var close = document.getElementsByClassName("close");
 for (let i = 0; i < close.length; i++) {
@@ -14,9 +31,13 @@ function activate(target) {
     let targetElem = document.getElementById("iah-" + target);
     let thisButn = document.getElementById("iah-" + target + "-nav");
 
-    Array.from(contentCont.children).map(child => child.classList.add('hidden'));
+    Array.from(contentCont.children).map((child) =>
+        child.classList.add("hidden")
+    );
     targetElem.classList.remove("hidden");
-    Array.from(navCont.children).map(child => child.classList.remove("active"))
+    Array.from(navCont.children).map((child) =>
+        child.classList.remove("active")
+    );
     thisButn.classList.add("active");
 }
 

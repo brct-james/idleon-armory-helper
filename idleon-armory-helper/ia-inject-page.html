@@ -70,6 +70,12 @@
         </div>
         <div id="iah-settings" class="hidden">
             <h2 id="settings-title" class="h2-title">Settings</h2>
+            <div class="settingsSegment">
+                <h3 class="h3-title">Appearance</h3>
+                <span>Toggle helper location (left or right): <button onclick="swapHelperLocation()">Swap</button></span>
+                <hr>
+                <span>Change helper width (as a percentage of screen width) [30 default]: <input id="helperWidthInput" type="number" value="30"/><button onclick="updateHelperWidth()">Save New Width</button></span>
+            </div>
         </div>
     </div>
 </div>
