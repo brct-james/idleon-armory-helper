@@ -15,6 +15,13 @@ function runHelper() {
     }
     //else actually run
     console.log("[IAHelper] Initializing");
+    //Force canvas to maintain aspect ratio
+    gameContainer.style.height = "auto";
+    gameContainer.style.width = "100%";
+    //Force canvas to center vertically
+    contentContainer.style.display = "flex";
+    contentContainer.style.alignItems = "center";
+    //Maximize game container
     gameContainer.style.padding = "10px";
 
     $.get(chrome.runtime.getURL("ia-inject-page.html"), function (data) {
@@ -26,15 +33,15 @@ function runHelper() {
 }
 
 function injectJS() {
-    $.getScript(chrome.runtime.getURL('ia-inject-script.js'), function (data) {
+    $.getScript(chrome.runtime.getURL("ia-inject-script.js"), function (data) {
         console.log("[IAHelper] Injected page JS");
-    })
+    });
 }
 
 function initializeHTML() {
+    // Add close spans to each pre-existing LI
     var myNodelist = document.getElementsByTagName("LI");
-    var i;
-    for (i = 0; i < myNodelist.length; i++) {
+    for (let i = 0; i < myNodelist.length; i++) {
         var span = document.createElement("SPAN");
         var txt = document.createTextNode("\u00D7");
         span.className = "close";
@@ -42,21 +49,21 @@ function initializeHTML() {
         myNodelist[i].appendChild(span);
     }
 
-    // Click on a close button to hide the current list item
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-        close[i].onclick = function () {
-            var div = this.parentElement;
-            div.style.display = "none";
-        };
-    }
-
     // Add a "checked" symbol when clicking on a list item
-    var list = document.getElementById("iah-todo-list-items");
+    var list = $("#iah-todo-list-items");
+    console.log(list);
     list.click(function (ev) {
+        console.log("test");
         if (ev.target.tagName === "LI") {
             ev.target.classList.toggle("checked");
         }
     });
+    console.log(list.click)
+
+    let titleLogo = $('<img class="iah-logo">');
+    titleLogo.attr({
+        "src": chrome.runtime.getURL("images/iah_shield.png")
+    });
+    $("#iah-title").prepend(titleLogo);
+    // titleLogo.prepend("#iah-title");
 }

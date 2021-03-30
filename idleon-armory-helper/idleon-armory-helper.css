@@ -1,0 +1,233 @@
+/* Custom Scrollbar */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #cfcfcf;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #575757;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #272727;
+}
+
+#idleon-armory-helper {
+    background-color: white;
+    color: black;
+    font-family: arial;
+    box-sizing: border-box;
+    height: 100%;
+    width: 30vw;
+    font-size: 16px;
+    cursor: default;
+    display: flex;
+    flex-flow: column nowrap;
+}
+#iah-title {
+    font-size: 1.8em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+#iah-content {
+    background-color: rgb(228, 228, 228);
+    overflow-y: auto;
+}
+
+.h2-title {
+    font-size: 1.4em;
+    text-align: center;
+    padding: 0.5em 0;
+    margin: 0;
+}
+
+hr {
+    margin: 0;
+}
+
+.iah-logo {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.5em;
+}
+
+.hidden {
+    display: none;
+}
+
+.noselect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.active {
+    background-color: rgb(255, 156, 7) !important;
+}
+.active:hover {
+    cursor: not-allowed !important;
+}
+
+#iah-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(255, 65, 7);
+    margin: 0;
+}
+
+#iah-nav button {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0.5em 1em;
+    background-color: rgb(255, 99, 51);
+    color: white;
+    outline: none;
+}
+#iah-nav button:hover {
+    background-color: rgb(255, 156, 7);
+    cursor: pointer;
+}
+
+/* Remove margins and padding from the list */
+#iah-todo ul {
+    margin: 0;
+    padding: 0;
+}
+/* Style the list items */
+#iah-todo-list-items li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 2em 12px 24px;
+    list-style-type: none;
+    background: #ffffff;
+    font-size: 14px;
+    transition: 0.2s;
+
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Set all odd list items to a different color (zebra-stripes) */
+#iah-todo-list-items li:nth-child(odd) {
+    background: #d4d4d4;
+}
+/* Darker background-color on hover */
+#iah-todo-list-items li:hover {
+    background: #888888 !important;
+    color: #ffffff !important;
+}
+/* When clicked on, add a background color and strike out text */
+#iah-todo-list-items li.checked {
+    background: #525151;
+    color: #fff;
+    text-decoration: line-through;
+}
+/* Add a "checked" mark when clicked on */
+#iah-todo-list-items li.checked::before {
+    content: "";
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 12px;
+    left: 10px;
+    transform: rotate(45deg);
+    height: 11px;
+    width: 5px;
+}
+/* Style the close button */
+.close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Style the header */
+#iah-todo-new {
+    background-color: #f44336;
+    padding: 1em;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+/* Clear floats after the header */
+#iah-todo-new:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Style the inputs */
+#newTodo {
+    margin: 0 0.5em 0 0;
+    border: none;
+    border-radius: 0;
+    width: 50%;
+    padding: 10px;
+    float: left;
+    font-size: 16px;
+}
+#newIntervalContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 43%;
+    float: left;
+    font-size: 16px;
+    margin: 0 1em 0 0;
+}
+#newIntervalSubContainer {
+    display: flex;
+    flex-flow: row nowrap;
+}
+.newTodoInterval {
+    border: none;
+    border-radius: 0;
+    padding: 10px;
+}
+.numberInputGroup {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 33%;
+    margin: 0 0.25em 0 0;
+}
+.numberInputGroup label {
+    flex-shrink: 1;
+}
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 10px;
+    width: 7%;
+    background: #d9d9d9;
+    color: #555;
+    float: left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.addBtn:hover {
+    background-color: #bbb;
+}

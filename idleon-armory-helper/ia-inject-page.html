@@ -1,0 +1,75 @@
+<div id="idleon-armory-helper">
+    <div id="iah-header">
+        <h1 id="iah-title">Idleon Armory Helper</h1>
+    </div>
+    <div id="iah-nav">
+        <button onclick="activate('todo')" id="iah-todo-nav" class="active">
+            Tasks & Reminders
+        </button>
+        <button onclick="activate('settings')" id="iah-settings-nav">
+            Settings
+        </button>
+    </div>
+    <div id="iah-content">
+        <div id="iah-todo">
+            <h2 id="todo-title" class="h2-title">Tasks & Reminders</h2>
+            <div id="iah-todo-new">
+                <input type="text" id="newTodo" placeholder="Item..." />
+                <div id="newIntervalContainer">
+                    <span>Auto-Reset Interval</span>
+                    <div id="newIntervalSubContainer">
+                        <div class="numberInputGroup">
+                            <label for="newTodoDays">Days</label>
+                            <input
+                                type="number"
+                                id="newTodoDays"
+                                value="0"
+                                class="newTodoInterval"
+                                name="newTodoDays"
+                            />
+                        </div>
+                        <div class="numberInputGroup">
+                            <label for="newTodoHours">Hrs</label>
+                            <input
+                                type="number"
+                                id="newTodoHours"
+                                value="0"
+                                class="newTodoInterval"
+                                name="newTodoHours"
+                            />
+                        </div>
+                        <div class="numberInputGroup">
+                            <label for="newTodoMinutes">Mins</label>
+                            <input
+                                type="number"
+                                id="newTodoMinutes"
+                                value="0"
+                                class="newTodoInterval"
+                                name="newTodoMinutes"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <span onclick="newElement()" class="addBtn noselect">Add</span>
+            </div>
+            <div id="iah-todo-list">
+                <ul id="iah-todo-list-items">
+                    <li>Daily Guild GP Tasks</li>
+                    <li>Tasks (W1, W2)</li>
+                    <li>Alchemy Liquids</li>
+                    <li>Post Office Orders</li>
+                    <li>Collect AFK Gains, Refill Food, Quick Deposit Anvil, etc.</li>
+                    <li>Buy Talent Reset Shards, Silver Antique, Town Teleports etc. from all 4 shops</li>
+                    <li>Kill Boops, Dr Defecaus</li>
+                    <li>Collect Boss Keys & Arena Tickets (W1, W2)</li>
+                    <li>Weekly Guild Tasks</li>
+                    <li>Baba Yaga</li>
+                </ul>
+            </div>
+        </div>
+        <div id="iah-settings" class="hidden">
+            <h2 id="settings-title" class="h2-title">Settings</h2>
+        </div>
+    </div>
+</div>
