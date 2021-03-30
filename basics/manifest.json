@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "Idleon Armory Helper",
+    "version": "0.5.0",
+    "content_scripts": [
+        {
+            "js": [
+                "jquery-3.6.0.min.js",
+                "idleon-armory-helper.js"
+            ],
+            "css": [
+                "idleon-armory-helper.css"
+            ],
+            "matches": [
+                "https://www.legendsofidleon.com/*",
+                "http://www.legendsofidleon.com/*"
+            ]
+        }
+    ],
+    "web_accessible_resources": ["ia-inject-page.html", "ia-inject-script.js"]
+}
