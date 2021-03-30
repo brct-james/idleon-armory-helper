@@ -9,7 +9,15 @@ for (let i = 0; i < close.length; i++) {
 
 // Change which tab is active in sidebar
 function activate(target) {
+    let contentCont = document.getElementById("iah-content");
+    let navCont = document.getElementById("iah-nav");
+    let targetElem = document.getElementById("iah-" + target);
+    let thisButn = document.getElementById("iah-" + target + "-nav");
 
+    Array.from(contentCont.children).map(child => child.classList.add('hidden'));
+    targetElem.classList.remove("hidden");
+    Array.from(navCont.children).map(child => child.classList.remove("active"))
+    thisButn.classList.add("active");
 }
 
 // Create a new list item when clicking on the "Add" button
