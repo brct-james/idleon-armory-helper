@@ -39,6 +39,23 @@ function runHelper() {
             console.log('[IAHelper] Settings saved successfully');
         });
     });
+    window.addEventListener("saveTasks", function(data) {
+        let detail = data.detail;
+        console.log("[IAHelper] Received saveTasks event: ", detail);
+        chrome.storage.sync.set({tasks: detail}, function() {
+            console.log('[IAHelper] Tasks saved successfully');
+        });
+    });
+    window.addEventListener("clearStorage", function(data) {
+        console.log("[IAHelper] Received clearStorage event, clearing!")
+        clearStorage();
+    })
+}
+
+function clearStorage() {
+    chrome.storage.sync.clear(function() {
+        console.log("[IAHelper] Storage Cleared!");
+    });
 }
 
 function retrieveSavedSettings() {
@@ -48,10 +65,18 @@ function retrieveSavedSettings() {
     });
 }
 
+function retrieveSavedTasks() {
+    chrome.storage.sync.get(['tasks'], function(result) {
+        console.log("[IAHelper] Retrieved saved tasks: ", result);
+        window.dispatchEvent(new CustomEvent("loadTasks", {detail: result}));
+    });
+}
+
 function injectJS() {
     $.getScript(chrome.runtime.getURL("ia-inject-script.js"), function (data) {
         console.log("[IAHelper] Injected page JS");
         retrieveSavedSettings();
+        retrieveSavedTasks();
     });
 }
 
@@ -66,13 +91,7 @@ function initializeHTML() {
         myNodelist[i].appendChild(span);
     }
 
-    // Add a "checked" symbol when clicking on a list item
-    var list = $("#iah-todo-list-items");
-    list.click(function (ev) {
-        if (ev.target.tagName === "LI") {
-            ev.target.classList.toggle("checked");
-        }
-    });
+    
 
     let titleLogo = $('<img class="iah-logo">');
     titleLogo.attr({

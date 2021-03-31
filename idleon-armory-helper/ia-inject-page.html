@@ -14,7 +14,11 @@
         <div id="iah-todo">
             <h2 id="todo-title" class="h2-title">Tasks & Reminders</h2>
             <div id="iah-todo-new">
-                <input type="text" id="newTodo" placeholder="New Item Text..." />
+                <input
+                    type="text"
+                    id="newTodo"
+                    placeholder="New Item Text..."
+                />
                 <div id="newTodoRowContainer">
                     <!-- <div id="newIntervalContainer">
                         <span>Auto-Reset Interval</span>
@@ -51,30 +55,16 @@
                             </div>
                         </div>
                     </div> -->
-                    <span onclick="newElement()" class="addBtn noselect"
-                        >Add</span
-                    >
+                    <span onclick="newElement()" class="addBtn noselect">
+                        Add
+                    </span>
+                    <span onclick="uncheckAll()" class="addBtn noselect" style="margin-left: 1em;">
+                        Uncheck All
+                    </span>
                 </div>
             </div>
             <div id="iah-todo-list">
-                <ul id="iah-todo-list-items">
-                    <li>Daily Guild GP Tasks</li>
-                    <li>Tasks (W1, W2)</li>
-                    <li>Alchemy Liquids</li>
-                    <li>Post Office Orders</li>
-                    <li>
-                        Collect AFK Gains, Refill Food, Quick Deposit Anvil,
-                        etc.
-                    </li>
-                    <li>
-                        Buy Talent Reset Shards, Silver Antique, Town Teleports
-                        etc. from all 4 shops
-                    </li>
-                    <li>Kill Boops, Dr Defecaus</li>
-                    <li>Collect Boss Keys & Arena Tickets (W1, W2)</li>
-                    <li>Weekly Guild Tasks</li>
-                    <li>Baba Yaga</li>
-                </ul>
+                <ul id="iah-todo-list-items"></ul>
             </div>
         </div>
         <div id="iah-settings" class="hidden">
@@ -98,8 +88,8 @@
                         value="30"
                     /><button onclick="updateHelperWidth()">
                         Save New Width
-                    </button></span
-                >
+                    </button>
+                </span>
             </div>
         </div>
     </div>
