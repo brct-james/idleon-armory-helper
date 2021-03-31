@@ -1,18 +1,52 @@
+var helperSettings = {
+    helperLocation: "right",
+    width: 30
+}
+
 // Handle swapping helper sides
 function swapHelperLocation() {
     let body = document.getElementsByTagName("body")[0];
     body.classList.toggle("rowReverse");
 }
+function setHelperLocation(dir) {
+    let containsRowRev = document.getElementsByTagName("body")[0].classList.contains("rowReverse");
+    if (dir === "right" && containsRowRev) { //if rowRev then is on left, else on right
+        swapHelperLocation();
+        helperSettings.helperLocation = "right";
+    }
+    else if (dir === "left" && !containsRowRev) {
+        swapHelperLocation();
+        helperSettings.helperLocation = "left";
+    }
+    saveSettings();
+}
+
+window.addEventListener("loadSettings", function(data) {
+    let settings = data.detail.settings;
+    console.log("[IAInjected] Received loadSettings event: ", settings);
+    setHelperWidth(settings.width);
+    document.getElementById("helperWidthInput").value = settings.width;
+    setHelperLocation(settings.helperLocation);
+    console.log("[IAInjected] Completed loadSettings");
+});
 
 //Handle setting helper width
 function updateHelperWidth() {
     let input = document.getElementById("helperWidthInput");
+    setHelperWidth(input.value);
+    saveSettings();
+}
+function setHelperWidth(width) {
     let helper = document.getElementById("idleon-armory-helper");
-    let iVal = input.value + "vw";
+    let iVal = width + "vw";
     helper.style.width = iVal;
     helper.style.maxWidth = iVal;
     helper.style.minWidth = iVal;
-    input.value = 30;
+    helperSettings.width = width;
+}
+
+function saveSettings() {
+    window.dispatchEvent(new CustomEvent("saveSettings", {detail: helperSettings}));
 }
 
 // Click on a close button to hide the current list item

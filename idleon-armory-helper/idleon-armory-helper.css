@@ -193,6 +193,7 @@ hr {
     text-align: center;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
 /* Clear floats after the header */
@@ -204,21 +205,28 @@ hr {
 
 /* Style the inputs */
 #newTodo {
-    margin: 0 0.5em 0 0;
+    margin: 0 0 0.5em 0;
     border: none;
     border-radius: 0;
-    width: 50%;
+    width: 90%;
     padding: 10px;
     float: left;
     font-size: 16px;
 }
+#newTodoRowContainer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
 #newIntervalContainer {
     display: flex;
     flex-flow: column nowrap;
-    width: 43%;
+    width: 60%;
     float: left;
     font-size: 16px;
-    margin: 0 1em 0 0;
+    margin: 0 10% 0 0;
 }
 #newIntervalSubContainer {
     display: flex;
@@ -242,7 +250,7 @@ hr {
 /* Style the "Add" button */
 .addBtn {
     padding: 10px;
-    width: 7%;
+    width: 20%;
     background: #d9d9d9;
     color: #555;
     float: left;

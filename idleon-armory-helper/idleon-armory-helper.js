@@ -30,11 +30,28 @@ function runHelper() {
         initializeHTML();
         injectJS();
     });
+
+    console.log("[IAHelper] Registering event listeners");
+    window.addEventListener("saveSettings", function(data) {
+        let detail = data.detail;
+        console.log("[IAHelper] Received saveSettings event: ", detail);
+        chrome.storage.sync.set({settings: detail}, function() {
+            console.log('[IAHelper] Settings saved successfully');
+        });
+    });
+}
+
+function retrieveSavedSettings() {
+    chrome.storage.sync.get(['settings'], function(result) {
+        console.log("[IAHelper] Retrieved saved settings: ", result);
+        window.dispatchEvent(new CustomEvent("loadSettings", {detail: result}));
+    });
 }
 
 function injectJS() {
     $.getScript(chrome.runtime.getURL("ia-inject-script.js"), function (data) {
         console.log("[IAHelper] Injected page JS");
+        retrieveSavedSettings();
     });
 }
 
@@ -51,14 +68,11 @@ function initializeHTML() {
 
     // Add a "checked" symbol when clicking on a list item
     var list = $("#iah-todo-list-items");
-    console.log(list);
     list.click(function (ev) {
-        console.log("test");
         if (ev.target.tagName === "LI") {
             ev.target.classList.toggle("checked");
         }
     });
-    console.log(list.click)
 
     let titleLogo = $('<img class="iah-logo">');
     titleLogo.attr({
