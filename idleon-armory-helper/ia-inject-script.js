@@ -87,9 +87,9 @@ function newElement() {
         document.getElementById("iah-todo-list-items").appendChild(li);
     }
     document.getElementById("newTodo").value = "";
-    // document.getElementById("newTodoDays").value = "0";
-    // document.getElementById("newTodoHours").value = "0";
-    // document.getElementById("newTodoMinutes").value = "0";
+    document.getElementById("newTodoDays").value = "0";
+    document.getElementById("newTodoHours").value = "0";
+    document.getElementById("newTodoMinutes").value = "0";
 
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
